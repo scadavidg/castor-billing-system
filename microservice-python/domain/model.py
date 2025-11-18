@@ -9,9 +9,9 @@ class Item(BaseModel):
     """
     Represents a single line item in an invoice.
     """
-    producto: str  # Product name/identifier
-    precio_unitario: float  # Unit price
-    cantidad: int  # Quantity
+    product: str  # Product name/identifier
+    unit_price: float  # Unit price
+    quantity: int  # Quantity
 
 class InvoiceCalculationResult(BaseModel):
     """
@@ -19,6 +19,6 @@ class InvoiceCalculationResult(BaseModel):
     Contains all calculated amounts for the invoice.
     """
     subtotal: float  # Base amount before taxes and discounts
-    impuestos: float  # Tax amount (e.g., IVA)
-    descuentos: float  # Discount amount
+    taxes: float  # Tax amount (e.g., IVA)
+    discounts: float  # Discount amount
     total: float  # Final total: subtotal + taxes - discounts

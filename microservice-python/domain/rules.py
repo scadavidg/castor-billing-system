@@ -2,7 +2,7 @@
 Business rules for invoice calculations.
 Contains domain logic for subtotal, taxes, and discounts.
 """
-def calcular_subtotal(items):
+def calculate_subtotal(items):
     """
     Calculate subtotal by summing all item prices.
     
@@ -12,9 +12,9 @@ def calcular_subtotal(items):
     Returns:
         Total of (unit_price * quantity) for all items
     """
-    return sum(item.precio_unitario * item.cantidad for item in items)
+    return sum(item.unit_price * item.quantity for item in items)
 
-def calcular_impuestos(subtotal: float) -> float:
+def calculate_taxes(subtotal: float) -> float:
     """
     Calculate tax amount based on subtotal.
     Currently applies 19% IVA (VAT).
@@ -25,10 +25,10 @@ def calcular_impuestos(subtotal: float) -> float:
     Returns:
         Tax amount (subtotal * tax_rate)
     """
-    IVA = 0.19  # 19% VAT rate
-    return subtotal * IVA
+    VAT = 0.19  # 19% VAT rate
+    return subtotal * VAT
 
-def calcular_descuentos(subtotal: float) -> float:
+def calculate_discounts(subtotal: float) -> float:
     """
     Calculate discount amount based on business rules.
     Current rule: 5% discount if subtotal > 1000.

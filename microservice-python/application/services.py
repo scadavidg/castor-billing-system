@@ -2,7 +2,7 @@
 Application service layer for invoice calculations.
 Orchestrates business logic from domain layer.
 """
-from domain.rules import calcular_subtotal, calcular_impuestos, calcular_descuentos
+from domain.rules import calculate_subtotal, calculate_taxes, calculate_discounts
 from application.mappers import map_to_result
 
 class InvoiceCalculatorService:
@@ -23,11 +23,11 @@ class InvoiceCalculatorService:
             InvoiceCalculationResult with subtotal, taxes, discounts, and total
         """
         # Calculate base subtotal from items
-        subtotal = calcular_subtotal(items)
-        # Apply tax rules (e.g., IVA)
-        impuestos = calcular_impuestos(subtotal)
+        subtotal = calculate_subtotal(items)
+        # Apply tax rules (e.g., VAT)
+        taxes = calculate_taxes(subtotal)
         # Apply discount rules based on subtotal
-        descuentos = calcular_descuentos(subtotal)
+        discounts = calculate_discounts(subtotal)
         # Map to response DTO
-        return map_to_result(subtotal, impuestos, descuentos)
+        return map_to_result(subtotal, taxes, discounts)
 

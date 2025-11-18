@@ -3,7 +3,7 @@ Mappers for converting domain calculations to response DTOs.
 """
 from domain.model import InvoiceCalculationResult
 
-def map_to_result(subtotal, impuestos, descuentos):
+def map_to_result(subtotal, taxes, discounts):
     """
     Map calculation results to InvoiceCalculationResult DTO.
     
@@ -11,17 +11,17 @@ def map_to_result(subtotal, impuestos, descuentos):
     
     Args:
         subtotal: Base amount before taxes and discounts
-        impuestos: Tax amount to add
-        descuentos: Discount amount to subtract
+        taxes: Tax amount to add
+        discounts: Discount amount to subtract
         
     Returns:
         InvoiceCalculationResult DTO
     """
     # Calculate final total: subtotal + taxes - discounts
-    total = subtotal + impuestos - descuentos
+    total = subtotal + taxes - discounts
     return InvoiceCalculationResult(
         subtotal=subtotal,
-        impuestos=impuestos,
-        descuentos=descuentos,
+        taxes=taxes,
+        discounts=discounts,
         total=total
     )
