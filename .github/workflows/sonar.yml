@@ -42,5 +42,5 @@ jobs:
     - name: SonarQube Scan
       uses: sonarsource/sonarqube-scan-action@master
       env:
-        SONAR_HOST_URL: https://sonarqubelts-community-production-42af.up.railway.app
+        SONAR_HOST_URL: https://sonarqube-production-5177.up.railway.app/
         SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
